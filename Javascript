@@ -11,7 +11,8 @@ VALORES Y TIPOS DE DATOS:
 			- Existen 3 datos especiales en javascript, que son considerados númericos, pero no son números normales:
 				-Infinity y -Infinity: Hacen referencia a infinito y menos infinito
 				-Nan: 'Not a Number', es un dato de tipo numérico, pero no es un número, se obtiene cuando se intentan realizar operaciones numéricas que no son válidas. ejm 0/0
-				 OJO!! NaN es el único valor en javascript que comparado consigo mismo genera un false (NaN == NaN) //False (NaN denota el resultado de un cálculo sin sentido, y como tal, 					 no es igual al resultado de cualquier otro cálculo sin sentido.)
+				 OJO!! NaN es el único valor en javascript que comparado consigo mismo genera un false (NaN == NaN) //False (NaN denota el resultado de un cálculo sin sentido, y como tal,
+				 no es igual al resultado de cualquier otro cálculo sin sentido.)
 
 	String: Son utilizados para almacenar texto, se declaran usando "" ó '' 
 
