@@ -1,0 +1,128 @@
+JAVASCRIPT:
+https://eloquentjavascript.net/01_values.html
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+VALORES Y TIPOS DE DATOS:
+
+	Number: 
+		En javascript hay un tamaño límite de bits para representar números enteros 2^64 lo que equivale a un 18 y 16 ceros
+			- Para el caso de números negativos y decimales el '.' y el '-' ocupan un bit, por lo que se reduce a 15 ceros
+			- Existen 3 datos especiales en javascript, que son considerados númericos, pero no son números normales:
+				-Infinity y -Infinity: Hacen referencia a infinito y menos infinito
+				-Nan: 'Not a Number', es un dato de tipo numérico, pero no es un número, se obtiene cuando se intentan realizar operaciones numéricas que no son válidas. ejm 0/0
+				 OJO!! NaN es el único valor en javascript que comparado consigo mismo genera un false (NaN == NaN) //False (NaN denota el resultado de un cálculo sin sentido, y como tal, 					 no es igual al resultado de cualquier otro cálculo sin sentido.)
+
+	String: Son utilizados para almacenar texto, se declaran usando "" ó '' 
+
+		Cuando usamos comillas simples'' las cadenas se conocen como plantillas de cadena (Template literals) y podemos realizar ciertas operaciones como la siguiente:
+			`half of 100 is ${100 / 2}`, identificadas por el signo peso y dentro de corchetes.
+			esta operación lo que permite es realizar la operación que se encuentra dentro de los corchetes, convertir el resultado a String y concatenarlo a la cadena. 
+			
+		un String puede utilizar 16 bits, lo que permite almacenar 2^16 caracteres (Algunos caracteres requieren 2 posiciones)
+
+.		- Caracter de escape: El backslash es utiizado como caracter de escape, siempre que hay un \ en un string, indica que el siguiente caracte cumpler un función especial. ejm:
+			\n: Indica un salto de línea en el string
+			\": Indica que la comilla no cierra el String, hace parte de él
+			\t: hay una tabulación
+			\\: Se usan dos si se necesita que en el String contenga un \
+
+	
+	Boolean: 'true' or 'false' -> Operadores que pueden ser usados con Boolean: (Binarios) And: '&&'. Or: '||'. (Unario) not: '!'
+
+	  	 Operador ternario(Operador condicional): console.log(true ? 1 : 2); //1 (Cuando el dato boolean es true toma el primer valor, el segundo si es false) 
+
+	Empty Values: null y undefined son utilizados para denotar la ausencia de un valor significativo. La diferencia en su significado es un accidente del diseño de javascript
+
+
+	Conversión de tipo automática: Javascript hace todo lo posible por aceptar cualquier progrma que le sea entregado. Por ejemplo cuando a un operador se le entrega un valor de un tipo errado, bajo 
+					una serie de reglas javascript modifica el tipo de valor errado, para que la opereación se pueda llevar a cabo.
+
+					ejemplo: Para las siguientes operaciones se obtienen los siguientes resultados (Note que para el operador '+' predomina la concatenación de Strings)
+					console.log(8 * null) // → 0 -- console.log("5" - 1)// → 4 -- console.log("5" + 1)// → 51 -- console.log("five" * 2)// → NaN -- console.log(false == 0) // → true
+
+					Al momento de realizar comparaciones booleanas también se va a realizar conversión autómatica. 
+					(5 == "5")//true. Si queremos evitarlo usamos '===' o '!=='  (5 === 5)//false
+	
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+
+DECLARACIONES:
+
+	Existen tres tipos de declaraciones:
+
+	- var: Declara una variable, inicializándola opcionalmente a un valor. ejm var x = 42; 
+	- let: Declara una variable local en un bloque de ámbito, inicializándola opcionalmente a un valor.
+	- const: Declara una constante de solo lectura en un bloque de ámbito.
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+VARIABLES: 
+
+	Convención de nombrado: Debe iniciar por letra minus, '_' o '$'
+
+	Declarar variables:
+
+	- var x = 42; // Se puede usar para variables globales y locales
+	- x = 42. // Esto siempre declara una variable global y no puede ser cambiada a nivel local. //No es recomendado
+	- let y = 13 // declara una variable local en un bloque de ámbito
+
+	Podemos declarar una varible sin asignar ningún valor. Su valor por defecto será undefined. E
+	ejm: 
+		var x;
+		if(x === undefined){...} // La condición es verdadera (Este condicional sirve para determinar si una variable tiene algún valor asociado)
+
+	Cuando se usa un dato undefined en una operación arítmetica se convierte en Nan: No numérico.
+	Null en una operación aritmética se convierte en 0 y en una operación booleana se toma como false
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+FUNCIONES:
+	
+	Algunas funciones útiles del lenguaje:
+		Number: COnvierte un valor a número. ejm: let num = Number(prompt("Pick a number")); //prompt solicite un valor por pantalla
+		Number.isNaN: Retorna true si el parámetro entregado es NaN  //Number.isNaN(num)
+
+		String: Convierte a string
+		Boolean Convierte a Boolean
+
+	Declaración de funciones:
+		
+		- const square = function(x) { return x*x; };
+		- let square = function(x) { return x*x; }; //Se puede alteral el funcionamiento de la función en tiempo de ejecución.
+		- function square(x) { return x*x; } // No requiere ';' , puede ser declarada en cualquier parte del código, incluso después de ser utilizada y no habrá problema
+
+		- Funciones flecha (Arrow functions): Existe una tercera notación para la declaración de variables, que reemplaza la palabra reservada function por '=>'. 
+						      Ejm. const sum = (x,y) => x + b; 
+							   //Los parámetros se ubican antes de la flecha en los paréntesis. (Se pueden omitir los paréntesis para un solo parámetro)
+							   //La función siempre se asigna a una variable. por lo que se denominan funciones anónimas.
+							   //La palabra reservada return y las llaves solo son necesarias cuando el cuerpo tiene más de una instrucción
+							   //Cuando no se tienen parámetros se colocan los paréntecis vacíos: const horno = () => console.log("Horneado");
+			ejm2. const power = (base, exponent) => {
+				  let result = 1;
+				  for (let count = 0; count < exponent; count++) {
+				    result *= base;
+				  }
+				  return result;
+				};
+			
+
+	Retorno: El retorno de la función es definido por la palabra reservada 'return'. Cuando solo se usa la palabra return, sin ningún valor se va a retornar undefined, e igualemnte cuando laa función
+		 no tenga un retorno definido
+
+
+	Argumentos opcionales:  En javascript, podemos declarar una función con un solo parámetro, pero luego llamarla usando 3 parámetros o declararla con 3 parámetros y luego llamarla solo con uno.
+				Ejm.    function square(x) { return x * x; } //Declaración con un solo parámetro
+					console.log(square(4, true, "hedgehog")); //Se invoca la función usando 3 parámetros
+					// → 16 //La salida es la esperada. Javascript toma el parámetro numérico e ignora los demás
+
+				NOTA: Cuando se pasan menos parámetros de los esperados a los faltantes se les asigna el valor undefined
+				NOTA2:Tener mucho cuidado a la hora de invocar una función, ya que si no se usan los parámetros adecuados nadie lo va a informar
+
+				Podemos asignar un valor predeterminado a un parámetro con el operador '=', ese valor será asignado al parámetro en caso de que no sea asignado por el usuario.
+				Ejm.   function power(base, exponent = 2) {Instrucciones}
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+
