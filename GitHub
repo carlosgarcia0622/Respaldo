@@ -7,7 +7,7 @@ Git hub:
 
 - Crear rama develop o ingresar por primera vez:
 	
-	git checkout -b develop - git push -u origin develop
+	git checkout -b develop - git pull -u origin develop
 
 - Crear un nuevo feature que salga de develop, Ramas que salen de develop:
 

@@ -1,0 +1,99 @@
+Android - Kotlin:
+
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+- Conectar con un elemneto de la vitas desde la clas .kt:
+
+   Se puede hacer únicamente importando la siguiente clase y haciedo referencia al objeto por su ID: 
+
+	Ejm:
+
+	import kotlinx.android.synthetic.main.activity_main.*
+	//En el OnCreate()
+
+	btn_id.setOnClickListener{
+	   //Code
+	}
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+- Mensajes emergentes:
+
+  útiles para mostrar mensajes informativos a los usuarios: Ejm. No se pueden refrescar las noticias
+
+	Ejm:
+
+	Toast.makeText(this,"Boton ejecutado", Toast.LENGTH_LONG).show;
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+- Agregar permisos a la aplicación:
+
+   Agregar al AndroidManifest.xml los siguientes comandos dependiendo del permiso requerido
+
+	Internet: <uses-permission android:name="android.permission.INTERNET" />
+
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+- Consumir Api Rest con Retrofit2
+
+	1- Agregar las siguientes dependencias en build.gradle(Module:pp) En dependencies{}
+
+	//Retrofit2
+	implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+	implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+	//Rxjava
+	implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+	implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+	//Support
+	implementation 'com.android.support:cardview-v7:28.0.0'
+	implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+Continuación: 
+	https://www.youtube.com/watch?reload=9&v=mKkOZ5Z5mtY
+	https://www.youtube.com/watch?v=BZ_83Exc5Ko
+	https://medium.com/@elye.project/kotlin-and-retrofit-2-tutorial-with-working-codes-333a4422a890
+
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+- O Auth
+	Tutorial: https://firebase.google.com/docs/auth/android/google-signin?hl=es-419
+
+	1- Add class path en build gradle project: classpath 'com.google.gms:google-services:4.1.0'
+
+	2- Aplicar plugin de servicios de google en build gradle app: 
+		
+		dependencies {
+		  // Add this line*********
+		  implementation 'com.google.firebase:firebase-core:16.0.4'
+		  implementation 'com.google.firebase:firebase-auth:16.0.4'
+		}
+		...
+		// Add to the bottom of the file********
+		apply plugin: 'com.google.gms.google-services'
+
+		(Al momento de hacer un sync sale error que se soluciona con el paso 3)
+
+	3- Crear un proyecto en la consola firebase: https://console.firebase.google.com/u/0/?hl=es-419
+		Nombre: Renty - ID: renty-404
+		paquete: com.esteban.rentcar
+		Certificado de firma SHA-1:
+			Se creó una carpeta dentro del proyecto llamada keystoreRenty dentró de la cual se creó el archivo keyRenty.jks
+			Para crear el archivo se ingresó desde android studio Build/generate signed apk -> create new key store path ->Seleccionar carpeta y poner nombre al archivo.
+				Almacen de claves (Password): renty404
+				key Alias: keyRenty
+
+		Para consultarlo se usó el comando: keytool -exportcert -list -v -alias keyRenty -keystore ~/Escritorio/universidad/AppsEmp/Renty/keystoreRenty/keyRenty.jks
+			Resultado: 95:0A:CC:2F:24:09:17:42:A1:37:42:D8:28:4F:55:D1:BB:B1:33:53
+
+ 	Luego de agregar esta información en la consola firebase se crea un archivo json, el cual se debe descargar y almacenar en la carpeta app del proyecto. luego de esto se hace un build y la app debe 
+	ejecutarse sin problemas
+
+	4 - Habilita el Acceso con Google en Firebase console: En Firebase console, abrir la sección Auth. En la pestaña Método de acceso, habilitar el método de Google y clic en Guardar.
+	
+				
+				
+
+
