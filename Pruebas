@@ -74,7 +74,38 @@ Clase 27 Octubre: DOJO TDD
 CODE BREAKER: Algoritmo que permite adivinar un número y dar una respuesta para ese número: El algoritmo tiene un número secreto
 
 
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+C.I Server: ejm jenkins, circle, travis, codeship, etc
+
+Servidor de integración continua que detecta cuando se hace un cambio en el manejador de versiones. Cada que hay un cambio debe hacer:
+
+	-configurar ambiente e instalar dependencias	//EStas tres cosas se conocen como: la build del proyecto
+	-build (compilar)
+	-Testear
+
+EL objetivo principal de la integracion continua es que despues de cada cambio se pueda saber si el proyecto completo compila correctamente. Cheackout del proyecto
+
+- En clase se va a usar codeship, se crea una cuenta con github, luego se selecciona el proyecto de github con el que se desea trabajar. seleccionamos java, scala o el lenguaje en le que se haya desarrollado el proyecto, luego se deben actualizar las dependencias(Buscar en el link de la plantilla de java en este caso, usando el reporitorio maven DojoTDDMaven(Java jdk 8)). Luego se debe dar deploy y volver a test y nuevamente agregar la plantilla(no se sabe por qué, intentar otras formas). luego de esto dar clic en boton verde y a partir de este momento cualquier cambio en el repositorio git va a generar el ciclo de integracion continua.
+
+Para que en el readme se lea si el proyecto está compilando, pegar el Copy Markdown Syntax que se encuentraen: entrar a una de las pruebas del proyecto/Settings project/General/ copiar Markdown Syntax y pegarlo en readme en github
 
 
+Cuando la pruebas funcionan podemos hacer:
+	-Deploy
+	-Smoke testes     // EStos tres elementos son conocidos como Delivery y existe continuos delivery o continuos deployment
+	-Puebas de aceptacion
+
+continuos deployment: Cada cambio que se haga en master se va a produccion despues de pasar por las pruebas
+Continuos Delivery: Cada cambio, debe pasar por un control manual para pasar a produccion despues de pasar por las pruebas
+
+
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________
+
+mvn compile
+mvn run
+mvn compile
+mvn spring-boot:run
 
 
